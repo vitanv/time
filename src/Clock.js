@@ -65,10 +65,10 @@ export class Clock extends React.Component{
       <div className='container'>
         <div className='time'>{this.state.date.toLocaleTimeString('en-UK', { hour12: this.state.format})}</div>
         <div className='date'>{day[this.state.date.getDay()]} {this.state.date.getDate()} of {month[this.state.date.getDay()]} {this.state.date.getUTCFullYear()}</div>
-        <div class="switch">
+        <label class="switch">
           <input type="checkbox" onClick={() => this.changeFormat()} />
           <span class="slider" />
-        </div>
+        </label>
       </div>
     )
   }
