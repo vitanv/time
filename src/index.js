@@ -21,7 +21,7 @@ root.render(
             <Tab eventKey="clock" title="Clock">
               <Clock />
             </Tab>
-            <Tab eventKey="timer" title="Timer">
+            <Tab eventKey="timer" title="Stopwatch">
               <Timer />
             </Tab>
             <Tab eventKey="countdown" title="Countdown">

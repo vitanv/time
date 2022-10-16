@@ -1,7 +1,7 @@
 import React from 'react';
 import './Pomodoro.css';
 
-export class Clock extends React.Component{
+export class Pomodoro extends React.Component{
   constructor(props){
     super(props);
     this.state = {}
@@ -16,4 +16,4 @@ export class Clock extends React.Component{
 
 }
 
-export default Clock;
+export default Pomodoro;
