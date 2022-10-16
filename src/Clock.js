@@ -2,6 +2,7 @@ import React from 'react';
 import './Clock.css';
 
 
+
 const day = [
   "Sunday",
   "Monday",
@@ -31,17 +32,19 @@ export class Clock extends React.Component{
     
     this.state = {
       date:new Date,
+      format: false,
     }
+    this.changeFormat = this.changeFormat.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () =>  {
     this.timer = setInterval(
       () => this.tick(),
       1000
     );
   }
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     clearInterval(this.timer);
   }
 
@@ -51,12 +54,21 @@ export class Clock extends React.Component{
     });
   }
 
+  changeFormat = () => {
+    this.setState({
+      format:!this.state.format,
+    })
+  }
+
   render(){
     return(
-      <div>
-        <div className='time'>{this.state.date.toLocaleTimeString()}</div>
-        <div className='time'>{this.state.date.toLocaleTimeString('en-UK', { hour12: true })}</div>
+      <div className='container'>
+        <div className='time'>{this.state.date.toLocaleTimeString('en-UK', { hour12: this.state.format})}</div>
         <div className='date'>{day[this.state.date.getDay()]} {this.state.date.getDate()} of {month[this.state.date.getDay()]} {this.state.date.getUTCFullYear()}</div>
+        <div class="switch">
+          <input type="checkbox" onClick={() => this.changeFormat()} />
+          <span class="slider" />
+        </div>
       </div>
     )
   }
