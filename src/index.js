@@ -15,7 +15,7 @@ root.render(
     <div className='wrapper'>
         <div>
           <Tabs
-            defaultActiveKey="clock"
+            defaultActiveKey="countdown"
             className="mb-3"
           >
             <Tab eventKey="clock" title="Clock">
