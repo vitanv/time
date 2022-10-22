@@ -9,7 +9,7 @@ export class Timer extends React.Component{
       hours:0,
       minutes:0,
       seconds:0,
-      miliseconds:0
+      centiseconds:0
     }
     this.changeState = this.changeState.bind(this);
   }
@@ -29,13 +29,13 @@ export class Timer extends React.Component{
       let hour = this.state.hours;
       let minute = this.state.minutes;
       let second = this.state.seconds;
-      let milisecond = this.state.miliseconds;
+      let centisecond = this.state.centiseconds;
       
       this.timer = setInterval( () => {
-        milisecond++;
-        if(milisecond >= 100){
+        centisecond++;
+        if(centisecond >= 100 ){
           second++;
-          milisecond = 0;
+          centisecond = 0;
         }
         if(second >= 60){
           minute++;
@@ -49,7 +49,7 @@ export class Timer extends React.Component{
           hours:hour,
           minutes:minute,
           seconds:second,
-          miliseconds:milisecond,
+          centiseconds:centisecond,
         });
       }, 10);
     }
@@ -64,7 +64,7 @@ export class Timer extends React.Component{
       hours:0,
       minutes:0,
       seconds:0,
-      miliseconds:0,
+      centiseconds:0,
     });
   }
 
@@ -75,7 +75,7 @@ export class Timer extends React.Component{
           <span>{this.format(this.state.hours)}</span>:
           <span>{this.format(this.state.minutes)}</span>:
           <span>{this.format(this.state.seconds)}</span>:
-          <span>{this.format(this.state.miliseconds)}</span>
+          <span>{this.format(this.state.centiseconds)}</span>
         </div>
         <label className="switch">
           <input type="checkbox" onClick={() => this.changeState()} />

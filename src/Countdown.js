@@ -9,9 +9,10 @@ export class Countdown extends React.Component{
       hours:0,
       minutes:0,
       seconds:0,
-      miliseconds:0
+      centiseconds:0
     }
     this.changeTime = this.changeTime.bind(this)
+    this.changeState = this.changeState.bind(this);
   }
 
 
@@ -40,6 +41,43 @@ export class Countdown extends React.Component{
     })
   }
 
+  changeState = () =>{
+    if(this.state.active){
+      clearInterval(this.timer);
+    }else{
+      let hour = this.state.hours;
+      let minute = this.state.minutes;
+      let second = this.state.seconds;
+      let centisecond = this.state.centiseconds;
+      
+      this.timer = setInterval( () => {
+        centisecond--;
+        if(centisecond < 0 && second >= 1){
+          second--;
+          centisecond = 99;
+        }else if( centisecond < 0 && second < 0 && minute >= 1){
+          
+        }
+        
+
+        if(hour < 0 && minute < 0 && second < 0 && centisecond < 0){
+          this.setState({
+            active:!this.state.active,
+          });
+        }
+        this.setState({
+          hours:hour,
+          minutes:minute,
+          seconds:second,
+          centiseconds:centisecond,
+        });
+      }, 10);
+    }
+    this.setState({
+      active:!this.state.active,
+    });
+  }
+
   render(){
     return(
       <div className='container'>
@@ -47,7 +85,7 @@ export class Countdown extends React.Component{
           <span>{this.format(this.state.hours)}</span>:
           <span>{this.format(this.state.minutes)}</span>:
           <span>{this.format(this.state.seconds)}</span>:
-          <span>{this.format(this.state.miliseconds)}</span>
+          <span>{this.format(this.state.centiseconds)}</span>
         </div>
         <div className='control'>
           <select id="hours" onChange={(e) => this.changeTime(e)}>
@@ -62,10 +100,14 @@ export class Countdown extends React.Component{
             <option value={""} disabled selected hidden>Seconds</option>
             {this.createList(60)}
           </select>
-          <select id="miliseconds" onChange={(e) => this.changeTime(e)}>
-            <option value={""} disabled selected hidden>Miliseconds</option>
+          <select id="centiseconds" onChange={(e) => this.changeTime(e)}>
+            <option value={""} disabled selected hidden>centiseconds</option>
             {this.createList(100)}
           </select>
+          <label className="switch">
+            <input type="checkbox" onClick={() => this.changeState()} />
+            <span className="slider" />
+          </label>
         </div>
       </div>
     )
