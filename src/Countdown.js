@@ -43,19 +43,19 @@ export class Countdown extends React.Component{
         </div>
         <div className='control'>
           <select>
-            <option value={""}>Hours</option>
+            <option value={""} disabled selected hidden>Hours</option>
             {this.createList(24)}
           </select>
           <select>
-            <option value={""}>Minutes</option>
+            <option value={""} disabled selected hidden>Minutes</option>
             {this.createList(60)}
           </select>
           <select>
-            <option value={""}>Seconds</option>
+            <option value={""} disabled selected hidden>Seconds</option>
             {this.createList(60)}
           </select>
           <select>
-            <option value={""}>Miliseconds</option>
+            <option value={""} disabled selected hidden>Miliseconds</option>
             {this.createList(100)}
           </select>
         </div>
