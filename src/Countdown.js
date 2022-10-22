@@ -11,6 +11,7 @@ export class Countdown extends React.Component{
       seconds:0,
       miliseconds:0
     }
+    this.changeTime = this.changeTime.bind(this)
   }
 
 
@@ -31,6 +32,13 @@ export class Countdown extends React.Component{
     return options
   }
   
+  changeTime = (event) =>{
+    let key = event.currentTarget.id;
+    let value = event.currentTarget.value;
+    this.setState({
+      [key]:value,
+    })
+  }
 
   render(){
     return(
@@ -42,19 +50,19 @@ export class Countdown extends React.Component{
           <span>{this.format(this.state.miliseconds)}</span>
         </div>
         <div className='control'>
-          <select>
+          <select id="hours" onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Hours</option>
             {this.createList(24)}
           </select>
-          <select>
+          <select id="minutes" onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Minutes</option>
             {this.createList(60)}
           </select>
-          <select>
+          <select id="seconds" onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Seconds</option>
             {this.createList(60)}
           </select>
-          <select>
+          <select id="miliseconds" onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Miliseconds</option>
             {this.createList(100)}
           </select>
