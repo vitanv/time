@@ -25,7 +25,6 @@ export class Countdown extends React.Component{
   }
 
   createList = (value) =>{
-    console.log("here");
     let options = [];
     for(let i = 0; i < value; i++){
       options.push(<option value={i}>{this.format(i+"")}</option>)
@@ -55,16 +54,21 @@ export class Countdown extends React.Component{
         if(centisecond < 0 && second >= 1){
           second--;
           centisecond = 99;
-        }else if( centisecond < 0 && second < 0 && minute >= 1){
-          
-        }
-        
-
-        if(hour < 0 && minute < 0 && second < 0 && centisecond < 0){
+        }else if( centisecond < 0 && second <= 0 && minute >= 1){
+          second = 59;
+          centisecond = 99;
+          minute--;
+        }else if( centisecond < 0 && second <= 0 && minute <= 0 && hour >=1){
+          second = 59;
+          centisecond = 99;
+          minute = 59;
+          hour--;
+        }else if(centisecond < 0 && second <= 0 && minute <= 0 && hour <= 0){
           this.setState({
-            active:!this.state.active,
+            active:false,
           });
         }
+        if(this.state.active == false) return;
         this.setState({
           hours:hour,
           minutes:minute,
@@ -101,7 +105,7 @@ export class Countdown extends React.Component{
             {this.createList(60)}
           </select>
           <select id="centiseconds" onChange={(e) => this.changeTime(e)}>
-            <option value={""} disabled selected hidden>centiseconds</option>
+            <option value={""} disabled selected hidden>Centiseconds</option>
             {this.createList(100)}
           </select>
           <label className="switch">
