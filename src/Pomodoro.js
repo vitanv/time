@@ -6,6 +6,7 @@ export class Pomodoro extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      pause: false,
       active: false,
       minutes:25,
       seconds:0,
@@ -34,16 +35,26 @@ export class Pomodoro extends React.Component{
           minute--;
           second = 59;
         }else if(second <= 0 && minute <= 0){
+          let pauseState = !this.state.pause;
           this.setState({
+            pause: pauseState,
             active:false,
           });
+          second = 0;
+          if(pauseState){
+            minute = 5;
+          }else{
+            minute = 25
+          }
+          clearInterval(this.timer);
+          
         }
-        if(this.state.active == false) return;
+        
         this.setState({
           minutes:minute,
           seconds:second,
         });
-      }, 1000);
+      }, 10);
     }
     this.setState({
       active:!this.state.active,
@@ -51,8 +62,14 @@ export class Pomodoro extends React.Component{
   }
 
   resetWatch = () =>{
+    let minute;
+    if(this.state.pause){
+      minute = 5;
+    }else{
+      minute = 25
+    }
     this.setState({
-      minutes:25,
+      minutes:minute,
       seconds:0,
     });
   }
