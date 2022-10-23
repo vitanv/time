@@ -42,6 +42,7 @@ export class Countdown extends React.Component{
       let centisecond = this.state.centiseconds;
       
       this.timer = setInterval( () => {
+       
         centisecond--;
         if(centisecond < 0 && second >= 1){
           second--;
@@ -56,11 +57,13 @@ export class Countdown extends React.Component{
           minute = 59;
           hour--;
         }else if(centisecond < 0 && second <= 0 && minute <= 0 && hour <= 0){
+          console.log("here");
           this.setState({
             active:false,
           });
+          centisecond = 0;
+          clearInterval(this.timer);
         }
-        if(this.state.active == false) return;
         this.setState({
           hours:hour,
           minutes:minute,
@@ -101,7 +104,7 @@ export class Countdown extends React.Component{
             {this.createList(100)}
           </select>
           <label className="switch">
-            <input type="checkbox" onClick={() => this.changeState()} />
+            <input type="checkbox" onChange={() => this.changeState()} />
             <span className="slider" />
           </label>
         </div>
