@@ -6,6 +6,15 @@ export class Pomodoro extends React.Component{
     super(props);
     this.state = {}
   }
+
+  format = (value) =>{
+    if((value + "").length === 1){
+      return "0" + value;
+    }else{
+      return "" + value;
+    }
+  }
+  
   render(){
     return(
       <div>

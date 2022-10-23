@@ -1,5 +1,6 @@
 import React from 'react';
 import './Timer.css';
+import { format } from './format';
 
 export class Timer extends React.Component{
   constructor(props){
@@ -14,14 +15,6 @@ export class Timer extends React.Component{
     this.changeState = this.changeState.bind(this);
   }
 
-  format = (value) =>{
-    
-    if((value + "").length === 1){
-      return "0" + value;
-    }else{
-      return "" + value;
-    }
-  }
   changeState = () =>{
     if(this.state.active){
       clearInterval(this.timer);
@@ -72,10 +65,10 @@ export class Timer extends React.Component{
     return(
       <div className='container'>
         <div className='display'>
-          <span>{this.format(this.state.hours)}</span>:
-          <span>{this.format(this.state.minutes)}</span>:
-          <span>{this.format(this.state.seconds)}</span>:
-          <span>{this.format(this.state.centiseconds)}</span>
+          <span>{format(this.state.hours)}</span>:
+          <span>{format(this.state.minutes)}</span>:
+          <span>{format(this.state.seconds)}</span>:
+          <span>{format(this.state.centiseconds)}</span>
         </div>
         <label className="switch">
           <input type="checkbox" onClick={() => this.changeState()} />

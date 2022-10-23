@@ -1,5 +1,6 @@
 import React from 'react';
 import './Countdown.css';
+import { format } from './format';
 
 export class Countdown extends React.Component{
   constructor(props){
@@ -15,19 +16,10 @@ export class Countdown extends React.Component{
     this.changeState = this.changeState.bind(this);
   }
 
-
-  format = (value) =>{
-    if((value + "").length === 1){
-      return "0" + value;
-    }else{
-      return "" + value;
-    }
-  }
-
   createList = (value) =>{
     let options = [];
     for(let i = 0; i < value; i++){
-      options.push(<option value={i}>{this.format(i+"")}</option>)
+      options.push(<option value={i}>{format(i+"")}</option>)
     }
     return options
   }
@@ -86,10 +78,10 @@ export class Countdown extends React.Component{
     return(
       <div className='container'>
         <div className='display'>
-          <span>{this.format(this.state.hours)}</span>:
-          <span>{this.format(this.state.minutes)}</span>:
-          <span>{this.format(this.state.seconds)}</span>:
-          <span>{this.format(this.state.centiseconds)}</span>
+          <span>{format(this.state.hours)}</span>:
+          <span>{format(this.state.minutes)}</span>:
+          <span>{format(this.state.seconds)}</span>:
+          <span>{format(this.state.centiseconds)}</span>
         </div>
         <div className='control'>
           <select id="hours" onChange={(e) => this.changeTime(e)}>
