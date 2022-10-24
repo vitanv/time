@@ -6,6 +6,7 @@ export class Timer extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      button:"play-btn",
       active: false,
       hours:0,
       minutes:0,
@@ -18,7 +19,13 @@ export class Timer extends React.Component{
   changeState = () =>{
     if(this.state.active){
       clearInterval(this.timer);
+      this.setState({
+        button:"play-btn",
+      })
     }else{
+      this.setState({
+        button:"pause-btn",
+      })
       let hour = this.state.hours;
       let minute = this.state.minutes;
       let second = this.state.seconds;
@@ -70,10 +77,7 @@ export class Timer extends React.Component{
           <span>{format(this.state.seconds)}</span>:
           <span>{format(this.state.centiseconds)}</span>
         </div>
-        <label className="switch">
-          <input type="checkbox" onClick={() => this.changeState()} />
-          <span className="slider" />
-        </label>
+        <button className={this.state.button} onClick={() => this.changeState()}></button>
         <button className='btn' onClick={() => this.resetWatch()}>Reset</button>
       </div>
     )
