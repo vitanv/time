@@ -9,3 +9,30 @@
 .display{
     display: block;
 }
+
+.play-btn {
+    background: transparent;
+    box-sizing: border-box;
+    border-color: transparent transparent transparent #202020;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 17px 0 17px 30px;
+}
+
+.play-btn:hover {
+    border-color: transparent transparent transparent #404040;
+}
+
+.pause-btn{
+    height: 34px;
+    background: transparent;
+    box-sizing: border-box;
+    border-color: transparent transparent transparent #202020;
+    cursor: pointer;
+    border-style: double;
+    border-width: 0px 0 0px 30px
+}
+
+.pause-btn:hover {
+    border-color: transparent transparent transparent #404040;
+}
