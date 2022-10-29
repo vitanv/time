@@ -63,8 +63,10 @@ export class Clock extends React.Component{
   render(){
     return(
       <div className='container'>
-        <div className='time'>{this.state.date.toLocaleTimeString('en-UK', { hour12: this.state.format})}</div>
-        <div className='date'>{day[this.state.date.getDay()]} {this.state.date.getDate()} of {month[this.state.date.getDay()]} {this.state.date.getUTCFullYear()}</div>
+        <div className='display'>
+          <div className='time'>{this.state.date.toLocaleTimeString('en-UK', { hour12: this.state.format})}</div>
+          <div className='date'>{day[this.state.date.getDay()]} {this.state.date.getDate()} of {month[this.state.date.getDay()]} {this.state.date.getUTCFullYear()}</div>  
+        </div>
         <label className="switch">
           <input type="checkbox" onClick={() => this.changeFormat()} />
           <div className="slider">

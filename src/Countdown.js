@@ -110,8 +110,8 @@ export class Countdown extends React.Component{
             <option value={""} disabled selected hidden>Centiseconds</option>
             {this.createList(100)}
           </select>
-          <button className={this.state.button} onClick={() => this.changeState()}></button>
         </div>
+        <button className={this.state.button} onClick={() => this.changeState()}></button>
       </div>
     )
   }

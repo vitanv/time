@@ -5,3 +5,9 @@
     height: 100vh;
 }
 
+.display{
+    font-size: large;
+    font: 2em sans-serif;
+    text-align: center;
+}
+
