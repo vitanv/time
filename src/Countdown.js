@@ -64,7 +64,6 @@ export class Countdown extends React.Component{
           minute = 59;
           hour--;
         }else if(centisecond < 0 && second <= 0 && minute <= 0 && hour <= 0){
-          console.log("here");
           this.setState({
             active:false,
             button:"play-btn",

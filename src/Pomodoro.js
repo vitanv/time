@@ -6,6 +6,7 @@ export class Pomodoro extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      button:"play-btn",
       pause: false,
       active: false,
       minutes:25,
@@ -25,7 +26,13 @@ export class Pomodoro extends React.Component{
   changeState = () =>{
     if(this.state.active){
       clearInterval(this.timer);
+      this.setState({
+        button:"play-btn",
+      })
     }else{
+      this.setState({
+        button:"pause-btn",
+      })
       let minute = this.state.minutes;
       let second = this.state.seconds;
       
@@ -37,6 +44,7 @@ export class Pomodoro extends React.Component{
         }else if(second <= 0 && minute <= 0){
           let pauseState = !this.state.pause;
           this.setState({
+            button:"play-btn",
             pause: pauseState,
             active:false,
           });
@@ -81,10 +89,7 @@ export class Pomodoro extends React.Component{
           <span>{format(this.state.minutes)}</span>:
           <span>{format(this.state.seconds)}</span>
         </div>
-        <label className="switch">
-          <input type="checkbox"  />
-          <span className="slider" onClick={() => this.changeState()} />
-        </label>
+        <button className={this.state.button} onClick={() => this.changeState()}></button>
         <button className='btn' onClick={() => this.resetWatch()}>Reset</button>
       </div>
     )
