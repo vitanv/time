@@ -67,7 +67,10 @@ export class Clock extends React.Component{
         <div className='date'>{day[this.state.date.getDay()]} {this.state.date.getDate()} of {month[this.state.date.getDay()]} {this.state.date.getUTCFullYear()}</div>
         <label className="switch">
           <input type="checkbox" onClick={() => this.changeFormat()} />
-          <span className="slider" />
+          <div className="slider">
+            <span className='toggle-12'>12h</span>
+            <span className='toggle-24'>24H</span>
+          </div>
         </label>
       </div>
     )
