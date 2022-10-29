@@ -93,25 +93,25 @@ export class Countdown extends React.Component{
           <span>{format(this.state.seconds)}</span>:
           <span>{format(this.state.centiseconds)}</span>
         </div>
+        <button className={this.state.button} onClick={() => this.changeState()}></button>
         <div className='control'>
-          <select id="hours" onChange={(e) => this.changeTime(e)}>
+          <select id="hours" className='time-picker' onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Hours</option>
             {this.createList(24)}
           </select>
-          <select id="minutes" onChange={(e) => this.changeTime(e)}>
+          <select id="minutes" className='time-picker' onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Minutes</option>
             {this.createList(60)}
           </select>
-          <select id="seconds" onChange={(e) => this.changeTime(e)}>
+          <select id="seconds" className='time-picker' onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Seconds</option>
             {this.createList(60)}
           </select>
-          <select id="centiseconds" onChange={(e) => this.changeTime(e)}>
+          <select id="centiseconds" className='time-picker' onChange={(e) => this.changeTime(e)}>
             <option value={""} disabled selected hidden>Centiseconds</option>
             {this.createList(100)}
           </select>
         </div>
-        <button className={this.state.button} onClick={() => this.changeState()}></button>
       </div>
     )
   }

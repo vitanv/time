@@ -1,3 +1,13 @@
+body{
+    color: antiquewhite;
+    background-color: black;
+}
+
+.nav{
+    --bs-nav-link-color: antiquewhite;
+    --bs-nav-link-hover-color: antiquewhite; 
+}
+
 .wrapper{
     display: flex;
     align-items: center;
@@ -7,7 +17,11 @@
 
 .display{
     font-size: large;
-    font: 2em sans-serif;
+    font: 5em sans-serif;
     text-align: center;
+}
+
+button{
+    margin: 1rem;
 }
 

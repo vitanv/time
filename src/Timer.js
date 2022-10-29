@@ -19,9 +19,9 @@ export class Timer extends React.Component{
   changeState = () =>{
     if(this.state.active){
       clearInterval(this.timer);
-      this.setState({
-        button:"play-btn",
-      })
+        this.setState({
+          button:"play-btn",
+        })
     }else{
       this.setState({
         button:"pause-btn",
@@ -78,7 +78,7 @@ export class Timer extends React.Component{
           <span>{format(this.state.centiseconds)}</span>
         </div>
         <button className={this.state.button} onClick={() => this.changeState()}></button>
-        <button className='btn' onClick={() => this.resetWatch()}>Reset</button>
+        <button className='btn btn-primary' onClick={() => this.resetWatch()}>Reset</button>
       </div>
     )
   }

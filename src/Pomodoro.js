@@ -90,7 +90,7 @@ export class Pomodoro extends React.Component{
           <span>{format(this.state.seconds)}</span>
         </div>
         <button className={this.state.button} onClick={() => this.changeState()}></button>
-        <button className='btn' onClick={() => this.resetWatch()}>Reset</button>
+        <button className='btn btn-danger'  onClick={() => this.resetWatch()}>Reset</button>
       </div>
     )
   }
